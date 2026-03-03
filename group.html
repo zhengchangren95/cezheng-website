@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>团队成员 - 郑策 - 华中科技大学人工智能与自动化学院</title>
+  <!-- 替换[你的仓库名]：主仓库直接删除/[你的仓库名]，保留/assets/css/style.css -->
+  <link rel="stylesheet" href="/cezheng-website/assets/css/style.css">
+  <style>
+    /* Group页面专属样式（1:1复刻UCF原站，新增子分类标题+图标样式） */
+    .group-section {
+      margin-bottom: 40px;
+    }
+
+    .group-section h3 {
+      color: #003366;
+      font-size: 20px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 5px;
+    }
+
+    /* 新增：子分类标题（如Ph.D. Students）样式 + 图标 */
+    .subgroup-header {
+      display: flex;
+      align-items: center;
+      margin: 25px 0 15px 0;
+    }
+    /* 小图标：用CSS实现毕业帽，无需图片 */
+    .subgroup-icon {
+      font-size: 18px;
+      margin-right: 8px;
+      color: #555;
+    }
+    .subgroup-title {
+      font-weight: bold;
+      font-size: 17px;
+      color: #000;
+    }
+    .subgroup-desc {
+      font-size: 13px;
+      color: #666;
+      margin-left: 26px; /* 对齐图标右侧 */
+      margin-bottom: 15px;
+    }
+
+    /* 成员卡片网格 */
+    .member-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 25px;
+      margin-bottom: 10px; /* 适配子分类间距 */
+    }
+
+    .member-card {
+      text-align: center;
+    }
+
+    .member-card img {
+      width: 150px;
+      height: 180px;
+      object-fit: cover;
+      border: 1px solid #ddd;
+      margin-bottom: 10px;
+    }
+
+    .member-name {
+      font-weight: bold;
+      color: #000;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .member-role {
+      color: #555;
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .member-info {
+      color: #666;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 顶部导航栏：与所有页面保持统一 -->
+  <div class="navbar">
+    <a href="index.html">首页</a>
+    <a href="research.html">研究方向</a>
+    <a href="publications.html">发表论文</a>
+    <a href="group.html">团队成员</a>
+    <a href="join.html">加入我们</a>
+  </div>
+
+  <!-- 主体容器：左侧侧边栏 + 右侧内容区（与所有页面布局一致） -->
+  <div class="container">
+    <!-- 左侧个人信息侧边栏（完全复用其他页面样式） -->
+    <div class="sidebar">
+      <img src="/[你的仓库名]/assets/images/me.jpg" alt="Your Photo">
+      <h1>郑策</h1>
+      <p>青年教师</p>
+      <p>人工智能与自动化学院 | 华中科技大学</p>
+      <p>Email: ce.zheng@ucf.edu</p>
+      <p><a href="https://scholar.google.com/citations?user=YFKLC58AAAAJ&hl=en#" target="_blank">Google Scholar</a></p>
+    </div>
+
+    <!-- 右侧团队内容区（复刻原站结构） -->
+    <div class="content">
+      <h2>Group</h2>
+      <p>本课题组聚焦于人工智能、计算机视觉、具身智能等方向的研究，招生信息稍后更新。</p>
+
+      <!-- 1. Current Members（主模块，拆分为子分类） -->
+      <div class="group-section">
+        <h3>Current Members</h3>
+
+        <!-- 子分类1：Ph.D. Students（带图标+副标题，对应你截图的部分） -->
+        <div class="subgroup-header">
+          <span class="subgroup-icon">🎓</span> <!-- 毕业帽图标，和原站一致 -->
+          <span class="subgroup-title">博士研究生</span>
+        </div>
+        <p class="subgroup-desc">Current doctoral students in our group</p>
+        <div class="member-grid">
+          <div class="member-card">
+            <img src="/[你的仓库名]/assets/images/member1.jpg" alt="Zhang San">
+            <div class="member-name">虚位以待</div>
+            <div class="member-role">Ph.D. Student (2027-)</div>
+            <div class="member-info">Research: 具身智能</div>
+            <div class="member-info">Email: </div>
+          </div>
+        </div>
+
+        <!-- 子分类2：Master Students（可按需添加） -->
+        <div class="subgroup-header">
+          <span class="subgroup-icon">📚</span> <!-- 书本图标，区分硕士 -->
+          <span class="subgroup-title">硕士研究生</span>
+        </div>
+        <p class="subgroup-desc">Current master students in our group</p>
+        <div class="member-grid">
+          <div class="member-card">
+            <img src="/[你的仓库名]/assets/images/member2.jpg" alt="Li Si">
+            <div class="member-name">虚位以待</div>
+            <div class="member-role">Master Student (2027-)</div>
+            <div class="member-info">Research: 三维视觉</div>
+            <div class="member-info">Email: </div>
+          </div>
+        </div>
+
+        <!-- 子分类3：Research Assistants（可按需添加） -->
+        <div class="subgroup-header">
+          <span class="subgroup-icon">🔬</span> <!-- 实验图标，区分科研助理 -->
+          <span class="subgroup-title">研究助理</span>
+        </div>
+        <p class="subgroup-desc">Research assistants in our group</p>
+        <div class="member-grid">
+          <div class="member-card">
+            <img src="/[你的仓库名]/assets/images/member3.jpg" alt="Wang Wu">
+            <div class="member-name">虚位以待</div>
+            <div class="member-role">Research Assistant (2026-)</div>
+            <div class="member-info">Research: 三维视觉</div>
+            <div class="member-info">Email: </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <!-- 2. Alumni（毕业生模块，也可拆分子分类） -->
+      <div class="group-section">
+        <h3>Alumni</h3>
+        <div class="member-grid">
+          <div class="member-card">
+            <img src="/[你的仓库名]/assets/images/alumni1.jpg" alt="Zhao Liu">
+            <div class="member-name">赵六</div>
+            <div class="member-role">Master Student (2022-2025)</div>
+            <div class="member-info">Now: XX Research Institute</div>
+          </div>
+          <div class="member-card">
+            <img src="/[你的仓库名]/assets/images/alumni2.jpg" alt="Sun Qi">
+            <div class="member-name">孙七</div>
+            <div class="member-role">Research Assistant (2023-2024)</div>
+            <div class="member-info">Now: Ph.D. Candidate @ XX University</div>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- <!-- 可选：Collaborators 模块 -->
+      <div class="group-section">
+        <h3>Collaborators</h3>
+        <div class="member-grid">
+          <div class="member-card">
+            <div class="member-name">周八</div>
+            <div class="member-role">Professor, School of Computer Science</div>
+            <div class="member-info">Collaboration: Large Language Models</div>
+          </div>
+        </div>
+      </div> -->
+      
+    </div>
+  </div>
+</body>
+</html>

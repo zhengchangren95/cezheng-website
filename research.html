@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>研究方向 - 郑策 - 华中科技大学人工智能与自动化学院</title>
+  <!-- 替换[你的仓库名]：主仓库直接删除/[你的仓库名]，保留/assets/css/style.css -->
+  <link rel="stylesheet" href="/cezheng-website/assets/css/style.css">
+  <style>
+    /* Research页面专属样式（1:1复刻UCF原站） */
+    .research-section {
+      margin-bottom: 35px; /* 原站模块间距 */
+      padding: 0;
+    }
+    /* 研究方向标题：原站深蓝色+无下划线+加粗 */
+    .research-section h3 {
+      color: #003366;
+      font-size: 19px;
+      font-weight: bold;
+      margin-bottom: 12px;
+      border-bottom: none; /* 原站无下划线，关键区别 */
+      padding-bottom: 0;
+    }
+    /* 研究方向描述：原站字体/行高/颜色 */
+    .research-section p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #333;
+      margin-bottom: 8px;
+    }
+    /* 原站链接样式：蓝色+无下划线（hover才加） */
+    .research-section a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+    .research-section a:hover {
+      text-decoration: underline;
+    }
+    /* 项目标签（可选，原站部分模块有） */
+    .research-tag {
+      display: inline-block;
+      background-color: #f0f0f0;
+      padding: 2px 8px;
+      font-size: 13px;
+      color: #000;
+      border-radius: 3px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 顶部导航栏：与所有页面保持统一 -->
+  <div class="navbar">
+    <a href="index.html">首页</a>
+    <a href="research.html">研究方向</a>
+    <a href="publications.html">发表论文</a>
+    <a href="group.html">团队成员</a>
+    <a href="join.html">加入我们</a>
+  </div>
+
+  <!-- 主体容器：左侧侧边栏 + 右侧内容区（与所有页面布局一致） -->
+  <div class="container">
+    <!-- 左侧个人信息侧边栏（完全复用其他页面样式） -->
+    <div class="sidebar">
+      <img src="/[你的仓库名]/assets/images/me.jpg" alt="Your Photo">
+      <h1>郑策</h1>
+      <p>青年教师</p>
+      <p>人工智能与自动化学院 | 华中科技大学</p>
+      <p>Email: ce.zheng@ucf.edu</p>
+      <p><a href="https://scholar.google.com/citations?user=YFKLC58AAAAJ&hl=en#" target="_blank">Google Scholar</a></p>
+    </div>
+
+    <!-- 右侧研究内容区（1:1复刻原站格式） -->
+    <div class="content">
+      <h2>Research</h2>
+      <p style="margin-bottom: 30px; font-size: 16px; color: #555;">
+        Our research focuses on the intersection of computer vision, embodied AI, and multimodal learning.
+      </p>
+
+      <!-- 研究方向1：Computer Vision（原站风格模块） -->
+      <div class="research-section">
+        <h3>Computer Vision</h3>
+        <p>
+          We focus on 3D human perception and reconstruction, including human pose estimation, shape recovery, and dynamic motion capture from monocular/RGB-D videos. 
+          Our work aims to bridge the gap between 2D visual observations and 3D human understanding.
+        </p>
+        <p>
+          Related projects: 
+          <span class="research-tag">3D Human Pose</span>
+          <span class="research-tag">Human Shape Reconstruction</span>
+          <a href="#cv-papers" target="_self">(Papers)</a>
+        </p>
+      </div>
+
+      <!-- 研究方向2：Embodied AI（原站风格模块） -->
+      <div class="research-section">
+        <h3>Embodied AI</h3>
+        <p>
+          We explore how to enable robots to perceive and interact with the physical world through visual and tactile signals. 
+          Key topics include embodied perception, human-robot interaction, and lifelong learning for robotic systems.
+        </p>
+        <p>
+          Funded by: National Natural Science Foundation of China (NSFC)
+        </p>
+      </div>
+
+      <!-- 研究方向3：Multimodal Learning（原站风格模块） -->
+      <div class="research-section">
+        <h3>Multimodal Learning</h3>
+        <p>
+          We investigate the fusion of visual, textual, and spatial information for better scene understanding. 
+          Our research includes multimodal large language models (MLLMs) and cross-modal retrieval for robotic applications.
+        </p>
+        <p>
+          Collaborators: <a href="https://xxx.edu.cn" target="_blank">Prof. Zhou, XX University</a>
+        </p>
+      </div>
+
+      <!-- 可选：在研项目模块（原站部分页面有） -->
+      <div class="research-section">
+        <h3>Ongoing Projects</h3>
+        <p>
+          1. 3D Human Reconstruction from Low-Quality Videos (2024-2026, NSFC Youth Project)<br>
+          2. Embodied Perception for Service Robots (2025-2027, Provincial Key Project)
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

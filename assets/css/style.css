@@ -1,0 +1,122 @@
+/* 全局样式：适配中文网站极简风格 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* 中文字体优先，兼容不同系统 */
+  font-family: "Microsoft YaHei", "微软雅黑", "Times New Roman", Times, serif;
+}
+
+body {
+  background-color: #f8f8f8; /* 原网站浅灰背景 */
+  color: #333; /* 正文深灰，中文显示更舒适 */
+  font-size: 16px;
+  line-height: 1.7; /* 中文行高稍调大，阅读更友好 */
+}
+
+/* 顶部固定导航栏（原网站核心样式） */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #202020; /* 深灰导航栏 */
+  padding: 10px 20px;
+  z-index: 100;
+}
+
+.navbar a {
+  color: #fff; /* 导航文字白色 */
+  text-decoration: none;
+  margin-right: 20px;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  color: #ccc; /* 鼠标悬浮浅灰 */
+}
+
+/* 主体布局：左侧个人信息+右侧内容（和原网站一致） */
+.container {
+  display: flex;
+  margin: 80px auto 20px; /* 留出导航栏高度 */
+  width: 90%;
+  max-width: 1000px; /* 限制宽度，避免内容太宽 */
+}
+
+/* 左侧个人信息栏（占25%宽度） */
+.sidebar {
+  width: 25%;
+  padding: 20px;
+}
+
+/* 个人照片样式 */
+.sidebar img {
+  width: 100%;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+
+/* 左侧文字样式 */
+.sidebar h1 {
+  font-size: 24px;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.sidebar p {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+/* 右侧内容区（占75%宽度，左侧分隔线） */
+.content {
+  width: 75%;
+  padding: 20px;
+  border-left: 1px solid #ddd;
+}
+
+/* 内容区标题（原网站深蓝色） */
+.content h2 {
+  color: #003366;
+  margin-bottom: 20px;
+  font-size: 22px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+}
+
+/* 列表样式（论文/研究方向用） */
+.content ul {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+.content li {
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+/* 链接样式 */
+.content a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.content a:hover {
+  text-decoration: underline;
+}
+
+/* 手机端适配（原网站同款响应式） */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  .sidebar, .content {
+    width: 100%;
+    border-left: none;
+  }
+  .content {
+    padding-top: 0;
+  }
+}
