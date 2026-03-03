@@ -6,6 +6,8 @@
   <title>加入我们 - 郑策 - 华中科技大学人工智能与自动化学院</title>
   <!-- 替换[你的仓库名]：主仓库直接删除/[你的仓库名]，保留/assets/css/style.css -->
   <link rel="stylesheet" href="/cezheng-website/assets/css/style.css">
+  <!-- 引入Font Awesome图标库（仅新增这一行） -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     /* 加入我们页面专属样式（贴合原站+适配内容排版） */
     .join-section {
@@ -67,6 +69,13 @@
       text-decoration: underline dotted #0066cc;
       cursor: help;
     }
+    /* 仅新增：悬停引导图标样式 */
+    .tooltip-icon {
+      color: #0066cc;
+      cursor: help;
+      margin-left: 6px;
+      font-size: 14px;
+    }
   </style>
 </head>
 <body>
@@ -79,19 +88,9 @@
     <a href="join.html">加入我们</a>
   </div>
 
-  <!-- 主体容器：左侧侧边栏 + 右侧内容区（与所有页面布局一致） -->
-  <div class="container">
-    <!-- 左侧个人信息侧边栏（完全复用其他页面样式） -->
-    <div class="sidebar">
-      <img src="/zhengchangren95/assets/images/me.jpg" alt="Your Photo">
-      <h1>郑策</h1>
-      <p>青年教师</p>
-      <p>人工智能与自动化学院 | 华中科技大学</p>
-      <p>Email: ce.zheng@ucf.edu</p>
-      <p><a href="https://scholar.google.com/citations?user=YFKLC58AAAAJ&hl=en#" target="_blank">Google Scholar</a></p>
-    </div>
-
-    <!-- 右侧加入我们内容区（核心内容，按你的要求排版） -->
+  <!-- 主体容器：移除左侧侧边栏，仅保留右侧内容区并居中（仅修改这部分布局） -->
+  <div class="container" style="max-width: 800px; margin: 0 auto; padding: 0 20px;">
+    <!-- 右侧加入我们内容区（核心内容完全保留，仅给四个问题加图标） -->
     <div class="content">
       <h2>加入我们团队</h2>
       
@@ -124,15 +123,19 @@
         <ul>
           <li title="放在第一条，重要性不言而喻。骗骗别人，也就做不了科研，千万别把自己也骗了orz">
             自己是否是个诚实的人
+            <i class="fa-solid fa-circle-question tooltip-icon" title="放在第一条，重要性不言而喻。骗骗别人，也就做不了科研，千万别把自己也骗了orz"></i>
           </li>
           <li title="1. 了解该领域的发展脉络，前期核心基础工作，现阶段最新工作。2. 光读文章看博客是不够的，最好能实际上手跑过上述工作的代码，争取做到看得懂，能复现核心模块。3. 想想在这个方向上，有什么是自己能做的，有什么是自己想做的。作为一个初学者，对该方向的认知不够深刻是正常的。只要行动起来，总会好过在起点踌躇不前。">
             自己是否对意向研究方向有一个基础的认知
+            <i class="fa-solid fa-circle-question tooltip-icon" title="1. 了解该领域的发展脉络，前期核心基础工作，现阶段最新工作。2. 光读文章看博客是不够的，最好能实际上手跑过上述工作的代码，争取做到看得懂，能复现核心模块。3. 想想在这个方向上，有什么是自己能做的，有什么是自己想做的。作为一个初学者，对该方向的认知不够深刻是正常的。只要行动起来，总会好过在起点踌躇不前。"></i>
           </li>
           <li title="静心研究不代表要投入所有个人时间，但读博期间难免需要在某个时间段里全身心投入，想想自己是否能做到。">
             自己能否能静下心来做研究
+            <i class="fa-solid fa-circle-question tooltip-icon" title="静心研究不代表要投入所有个人时间，但读博期间难免需要在某个时间段里全身心投入，想想自己是否能做到。"></i>
           </li>
           <li title="懂的都懂（都是泪），有一个好心态是读博的基础">
             是否扛得住研究进展不顺利、值得接收的好工作被拒稿的挫折
+            <i class="fa-solid fa-circle-question tooltip-icon" title="懂的都懂（都是泪），有一个好心态是读博的基础"></i>
           </li>
         </ul>
         <p>与很多一路从计算机/人工智能专业读上来的同行相比，我可以说是半路出家。我本科和硕士的专业都是电子工程，期间也没做过机器视觉或人工智能相关的研究。很多人问过我为什么选择读人工智能的博士，为什么选择人体三维感知重建作为研究方向。坦白的说：我选择读博是因为硕士毕业没找到专业对口的工作，我又不太善于刷题 ，所以想着要不读个博试试。现在看来这个想法很天真也很冒险，不建议同学们像我这样。</p>
@@ -152,9 +155,25 @@
           <li>对于基础不强的同学们，提供从起步到入门的新手引导</li>
         </ul>
       </div>
-
-
     </div>
   </div>
+
+  <!-- 保留邮箱交互JS（你原版本遗漏了，这里补上） -->
+  <script>
+    function showJoinEmail(event) {
+      event.preventDefault();
+      const realJoinEmail = "ce.zheng@ucf.edu"; // 替换为你的真实邮箱
+      const displayElement = document.getElementById("join-email-display");
+      displayElement.textContent = realJoinEmail;
+      displayElement.style.display = "inline";
+      setTimeout(() => {
+        displayElement.style.display = "none";
+      }, 3000);
+    }
+    // 点击提示右键
+    document.getElementById("join-email-container")?.addEventListener("click", function() {
+      alert("请右键点击该文字查看邮箱地址！");
+    });
+  </script>
 </body>
 </html>
