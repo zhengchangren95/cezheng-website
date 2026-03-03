@@ -1,128 +1,40 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Publications - Ce Zheng</title>
-  <!-- 适配 https://zczcwh.github.io/ 主仓库路径 -->
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    /* UCF原站风格 + 适配论文排版 */
-    .pub-year {
-      color: #003366;
-      font-size: 20px;
-      margin: 30px 0 15px 0;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 5px;
-    }
-    .pub-item {
-      margin: 12px 0 12px 15px;
-      font-size: 16px;
-      line-height: 1.7;
-    }
-    .pub-tag {
-      display: inline-block;
-      background-color: #f0f0f0;
-      color: #000;
-      font-size: 13px;
-      padding: 2px 8px;
-      border-radius: 4px;
-      margin-right: 8px;
-    }
-    .pub-link {
-      color: #0066cc;
-      text-decoration: none;
-      margin-left: 8px;
-    }
-    .author-link {
-      color: #0066cc;
-      text-decoration: none;
-    }
-    .author-link:hover, .pub-link:hover {
-      text-decoration: underline;
-    }
-    .toggle-btn {
-      background-color: #f8f8f8;
-      border: 1px solid #ddd;
-      color: #333;
-      padding: 4px 12px;
-      font-size: 14px;
-      border-radius: 4px;
-      cursor: pointer;
-      margin-bottom: 10px;
-    }
-    .toggle-btn:hover {
-      background-color: #e8e8e8;
-    }
-    #preprint-content {
-      display: none;
-    }
-
-    /* Abstract按钮和摘要样式（核心新增） */
-    .abstract-btn {
-      background-color: #fff;
-      border: 1px solid #ddd;
-      color: #0066cc;
-      padding: 2px 8px;
-      font-size: 13px;
-      border-radius: 4px;
-      cursor: pointer;
-      margin-left: 8px;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .abstract-btn:hover {
-      background-color: #f0f8ff;
-      border-color: #0066cc;
-    }
-    .abstract-btn.active {
-      background-color: #fef3c7;
-      border-color: #f59e0b;
-      color: #92400e;
-    }
-    .pub-abstract {
-      margin: 10px 0 15px 30px;
-      padding: 10px 15px;
-      background-color: #f9f9f9;
-      border-left: 3px solid #0066cc;
-      font-size: 14px;
-      line-height: 1.6;
-      color: #444;
-      border-radius: 4px;
-      display: none;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>发表论文 - 郑策 - 华中科技大学</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- 统一导航栏 -->
-  <div class="navbar">
-    <a href="index.html">首页</a>
-    <a href="research.html">研究方向</a>
-    <a href="publications.html">发表论文</a>
-    <a href="group.html">团队成员</a>
-    <a href="join.html">加入我们</a>
+
+<!-- 导航栏 -->
+<div class="navbar">
+  <a href="index.html">首页</a>
+  <a href="research.html">研究方向</a>
+  <a href="publications.html">发表论文</a>
+  <a href="group.html">团队成员</a>
+  <a href="join.html">加入我们</a>
+</div>
+
+<!-- 主体容器 -->
+<div class="container">
+  <!-- 左侧侧边栏 -->
+  <div class="sidebar">
+    <img src="/assets/images/me.jpg" alt="郑策" />
+    <h1>郑策</h1>
+    <p>青年教师</p>
+    <p>人工智能与自动化学院</p>
+    <p>华中科技大学</p>
+    <p>邮箱：<a href="mailto:ce.zheng@ucf.edu">ce.zheng@ucf.edu</a></p>
+    <p>
+      <a href="https://scholar.google.com/citations?user=YFKLC58AAAAJ&hl=en" target="_blank">Google Scholar</a>
+    </p>
   </div>
 
-  <div class="container">
-    <!-- 左侧个人信息栏 -->
-    <div class="sidebar">
-      <img src="/assets/images/me.jpg" alt="Ce Zheng">
-      <h1>Ce Zheng</h1>
-      <p>Researcher</p>
-      <p>Email: zczcwh@xxx.com</p>
-      <p><a href="https://github.com/zczcwh" target="_blank">GitHub</a></p>
-      <p><a href="你的谷歌学术链接" target="_blank">Google Scholar</a></p>
-    </div>
-
-    <!-- 右侧论文内容区 -->
-    <div class="content">
-      <h2>Publications</h2>
-      <p style="margin-bottom: 20px; color: #555;">
-        * Equal contribution; † Corresponding author. <br>
-        Full list can be found on <a href="你的谷歌学术链接" target="_blank">Google Scholar</a>.
-      </p>
+  <!-- 右侧内容区 -->
+  <div class="content">
+    <h2>发表论文</h2>
 
       <!-- Preprint 折叠模块 -->
       <button class="toggle-btn" onclick="togglePreprint()">Show Preprints</button>
