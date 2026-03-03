@@ -3,24 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Publications - Ce Zheng</title>
-  <!-- 适配 https://zczcwh.github.io/ 主仓库路径 -->
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>发表论文 -  - 郑策 - 华中科技大学人工智能与自动化学院</title>
+  <!-- 替换[你的仓库名]：如果是主仓库(xxx.github.io)，直接删除/[你的仓库名]，保留/assets/css/style.css -->
+  <link rel="stylesheet" href="/cezheng-website/assets/css/style.css">
   <style>
-    /* UCF原站风格 + 适配论文排版 */
-    .pub-year {
+  /* 年份标题：原站深蓝色+下划线 */
+  .pub-year {
       color: #003366;
       font-size: 20px;
       margin: 30px 0 15px 0;
       border-bottom: 1px solid #ddd;
       padding-bottom: 5px;
     }
+    /* 论文条目：原站缩进+行高 */
     .pub-item {
       margin: 12px 0 12px 15px;
       font-size: 16px;
       line-height: 1.7;
     }
+    /* 论文标签（CVPR/ICCV等）：原站浅灰背景+圆角 */
     .pub-tag {
       display: inline-block;
       background-color: #f0f0f0;
@@ -30,18 +31,16 @@
       border-radius: 4px;
       margin-right: 8px;
     }
+    /* 论文链接：原站蓝色+无下划线（hover加） */
     .pub-link {
       color: #0066cc;
       text-decoration: none;
       margin-left: 8px;
     }
-    .author-link {
-      color: #0066cc;
-      text-decoration: none;
-    }
-    .author-link:hover, .pub-link:hover {
+    .pub-link:hover {
       text-decoration: underline;
     }
+    /* Preprint折叠/展开按钮：原站样式 */
     .toggle-btn {
       background-color: #f8f8f8;
       border: 1px solid #ddd;
@@ -55,48 +54,14 @@
     .toggle-btn:hover {
       background-color: #e8e8e8;
     }
+    /* Preprint内容默认隐藏 */
     #preprint-content {
-      display: none;
-    }
-
-    /* Abstract按钮和摘要样式（核心新增） */
-    .abstract-btn {
-      background-color: #fff;
-      border: 1px solid #ddd;
-      color: #0066cc;
-      padding: 2px 8px;
-      font-size: 13px;
-      border-radius: 4px;
-      cursor: pointer;
-      margin-left: 8px;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .abstract-btn:hover {
-      background-color: #f0f8ff;
-      border-color: #0066cc;
-    }
-    .abstract-btn.active {
-      background-color: #fef3c7;
-      border-color: #f59e0b;
-      color: #92400e;
-    }
-    .pub-abstract {
-      margin: 10px 0 15px 30px;
-      padding: 10px 15px;
-      background-color: #f9f9f9;
-      border-left: 3px solid #0066cc;
-      font-size: 14px;
-      line-height: 1.6;
-      color: #444;
-      border-radius: 4px;
       display: none;
     }
   </style>
 </head>
 <body>
-  <!-- 统一导航栏 -->
+  <!-- 顶部导航栏：与所有页面保持统一 -->
   <div class="navbar">
     <a href="index.html">首页</a>
     <a href="research.html">研究方向</a>
@@ -105,24 +70,16 @@
     <a href="join.html">加入我们</a>
   </div>
 
-  <div class="container">
-    <!-- 左侧个人信息栏 -->
-    <div class="sidebar">
-      <img src="/assets/images/me.jpg" alt="Ce Zheng">
-      <h1>Ce Zheng</h1>
-      <p>Researcher</p>
-      <p>Email: zczcwh@xxx.com</p>
-      <p><a href="https://github.com/zczcwh" target="_blank">GitHub</a></p>
-      <p><a href="你的谷歌学术链接" target="_blank">Google Scholar</a></p>
-    </div>
+  <!-- 主体容器：左侧侧边栏 + 右侧内容区（与所有页面布局一致） -->
+  <div class="container" style="display: flex; max-width: 1600px; margin: 0 auto; padding: 40px 20px;">
+    <div class="content" style="flex: 1; padding-left: 0; padding-top: 40px; border-left: none;">
+ 
 
-    <!-- 右侧论文内容区 -->
+
+    <!-- 右侧论文内容区（核心复刻原站） -->
     <div class="content">
-      <h2>Publications</h2>
-      <p style="margin-bottom: 20px; color: #555;">
-        * Equal contribution; † Corresponding author. <br>
-        Full list can be found on <a href="你的谷歌学术链接" target="_blank">Google Scholar</a>.
-      </p>
+      <h2>发表论文</h2>
+      <p><strong>注：</strong> † 通讯作者，* 共同一作 </p>
 
       <!-- Preprint 折叠模块 -->
       <button class="toggle-btn" onclick="togglePreprint()">Show Preprints</button>
