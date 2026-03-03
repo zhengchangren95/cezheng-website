@@ -4,100 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Publications - Ce Zheng</title>
+  <!-- 适配 https://zczcwh.github.io/ 主仓库路径 -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background-color: #ffffff;
-      color: #000;
-      margin: 0;
-      padding: 0;
-    }
-
-    .navbar {
-      background-color: #f8f8f8;
-      padding: 10px 20px;
-      border-bottom: 1px solid #ddd;
-    }
-    .navbar a {
-      margin-right: 20px;
-      text-decoration: none;
-      color: #0066cc;
-    }
-    .navbar a:hover {
-      text-decoration: underline;
-    }
-
-    .container {
-      display: flex;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    .sidebar {
-      width: 200px;
-      margin-right: 30px;
-      text-align: center;
-    }
-    .sidebar img {
-      width: 150px;
-      height: auto;
-      border-radius: 4px;
-      margin-bottom: 15px;
-    }
-    .sidebar h1 {
-      font-size: 20px;
-      margin: 10px 0;
-      color: #000;
-    }
-    .sidebar p {
-      margin: 5px 0;
-      font-size: 14px;
-    }
-    .sidebar a {
-      color: #0066cc;
-      text-decoration: none;
-    }
-    .sidebar a:hover {
-      text-decoration: underline;
-    }
-
-    .content {
-      flex: 1;
-    }
-    .content h2 {
-      font-size: 24px;
-      margin-bottom: 20px;
-      color: #000;
-    }
-    .content p.note {
-      margin-bottom: 20px;
-      color: #555;
-      font-size: 14px;
-    }
-    .content p.note a {
-      color: #0066cc;
-      text-decoration: none;
-    }
-    .content p.note a:hover {
-      text-decoration: underline;
-    }
-
+    /* UCF原站风格 + 适配论文排版 */
     .pub-year {
       color: #003366;
       font-size: 20px;
       margin: 30px 0 15px 0;
-      padding-bottom: 5px;
       border-bottom: 1px solid #ddd;
-      font-weight: bold;
+      padding-bottom: 5px;
     }
-
     .pub-item {
-      margin: 12px 0;
+      margin: 12px 0 12px 15px;
       font-size: 16px;
-      line-height: 1.6;
+      line-height: 1.7;
     }
-
     .pub-tag {
       display: inline-block;
       background-color: #f0f0f0;
@@ -107,27 +30,73 @@
       border-radius: 4px;
       margin-right: 8px;
     }
-
-    .author-link,
     .pub-link {
       color: #0066cc;
       text-decoration: none;
-      margin-left: 4px;
+      margin-left: 8px;
     }
-    .author-link:first-child,
-    .pub-link:first-child {
-      margin-left: 0;
+    .author-link {
+      color: #0066cc;
+      text-decoration: none;
     }
-    .author-link:hover,
-    .pub-link:hover {
+    .author-link:hover, .pub-link:hover {
       text-decoration: underline;
     }
+    .toggle-btn {
+      background-color: #f8f8f8;
+      border: 1px solid #ddd;
+      color: #333;
+      padding: 4px 12px;
+      font-size: 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+    .toggle-btn:hover {
+      background-color: #e8e8e8;
+    }
+    #preprint-content {
+      display: none;
+    }
 
-    /* 移除所有 Abstract 相关样式 */
+    /* Abstract按钮和摘要样式（核心新增） */
+    .abstract-btn {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      color: #0066cc;
+      padding: 2px 8px;
+      font-size: 13px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-left: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .abstract-btn:hover {
+      background-color: #f0f8ff;
+      border-color: #0066cc;
+    }
+    .abstract-btn.active {
+      background-color: #fef3c7;
+      border-color: #f59e0b;
+      color: #92400e;
+    }
+    .pub-abstract {
+      margin: 10px 0 15px 30px;
+      padding: 10px 15px;
+      background-color: #f9f9f9;
+      border-left: 3px solid #0066cc;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #444;
+      border-radius: 4px;
+      display: none;
+    }
   </style>
 </head>
 <body>
-  <!-- 导航栏 -->
+  <!-- 统一导航栏 -->
   <div class="navbar">
     <a href="index.html">首页</a>
     <a href="research.html">研究方向</a>
@@ -137,7 +106,7 @@
   </div>
 
   <div class="container">
-    <!-- 左侧个人信息 -->
+    <!-- 左侧个人信息栏 -->
     <div class="sidebar">
       <img src="/assets/images/me.jpg" alt="Ce Zheng">
       <h1>Ce Zheng</h1>
@@ -147,34 +116,540 @@
       <p><a href="你的谷歌学术链接" target="_blank">Google Scholar</a></p>
     </div>
 
-    <!-- 右侧论文列表 -->
+    <!-- 右侧论文内容区 -->
     <div class="content">
       <h2>Publications</h2>
-      <p class="note">
-        * Equal contribution; † Corresponding author.<br>
+      <p style="margin-bottom: 20px; color: #555;">
+        * Equal contribution; † Corresponding author. <br>
         Full list can be found on <a href="你的谷歌学术链接" target="_blank">Google Scholar</a>.
       </p>
 
-      <!-- 2026 -->
+      <!-- Preprint 折叠模块 -->
+      <button class="toggle-btn" onclick="togglePreprint()">Show Preprints</button>
+      <div id="preprint-content">
+        <h3 class="pub-year">Preprint (2025)</h3>
+        <div class="pub-item">
+          <span class="pub-tag">Preprint</span>
+          <a href="https://scholar.google.com/citations?user=DWd9_qQAAAAJ&hl=en/" target="_blank" class="author-link">Jungbin Cho</a>, 
+          <a href="https://minsu1206.github.io/" target="_blank" class="author-link">Minsu Kim</a>, 
+          <a href="https://jiiiisoo.github.io/" target="_blank" class="author-link">Jisoo Kim</a>, 
+          <strong>Ce Zheng</strong>,
+          <a href="https://www.laszlojeni.com/" target="_blank" class="author-link">Laszlo A. Jeni</a>,
+          <a href="https://faculty.ucmerced.edu/mhyang/" target="_blank" class="author-link">Ming-Hsuan Yang</a>,
+          <a href="https://yj-yu.github.io/home/" target="_blank" class="author-link">Youngjae Yu</a>,
+          <a href="https://sites.google.com/site/seonjookim/" target="_blank" class="author-link">Seon Joo Kim</a>.
+          <strong>SceneAdapt: Scene-aware Adaptation of Human Motion Diffusion</strong>.
+          arXiv, 2025.
+          <a href="https://arxiv.org/pdf/2510.13044" target="_blank" class="pub-link">[paper]</a>
+          <a href="https://sceneadapt.github.io/" target="_blank" class="pub-link">[project page]</a>
+          <button class="abstract-btn" onclick="toggleAbstract(this)">
+            <i class="fa-solid fa-file-lines"></i> Abstract
+          </button>
+          <div class="pub-abstract">
+            We introduce SceneAdapt, a framework that injects scene awareness into text-conditioned motion models by leveraging disjoint scene–motion and text–motion datasets through two adaptation stages: inbetweening and scene-aware inbetweening.
+          </div>
+        </div>
+      </div>
+
+      <!-- 2026年论文 -->
       <h3 class="pub-year">2026</h3>
       <div class="pub-item">
         <span class="pub-tag">CVPR 2026</span>
-        <a href="https://tsukasane.github.io/" class="author-link">Yiwen Zhao</a>,
+        <a href="https://tsukasane.github.io/" target="_blank" class="author-link">Yiwen Zhao</a>,
         <strong>Ce Zheng (project lead)</strong>,
-        <a href="https://yufu-wang.github.io/" class="author-link">Yufu Wang</a>,
+        <a href="https://yufu-wang.github.io/" target="_blank" class="author-link">Yufu Wang</a>,
         Hsueh-Han Daniel Yang,
         Liting Wen,
-        <a href="https://www.laszlojeni.com/" class="author-link">Laszlo A. Jeni</a>.
+        <a href="https://www.laszlojeni.com/" target="_blank" class="author-link">Laszlo A. Jeni</a>.
         <strong>OnlineHMR: Video-based Online World-Grounded Human Mesh Recovery</strong>.
         IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2026.
-        <a href="" class="pub-link">[paper]</a>
-        <a href="" class="pub-link">[project page]</a>
+        <a href="" target="_blank" class="pub-link">[paper]</a>
+        <a href="" target="_blank" class="pub-link">[project page]</a>
+        <button class="abstract-btn" onclick="toggleAbstract(this)">
+          <i class="fa-solid fa-file-lines"></i> Abstract
+        </button>
+        <div class="pub-abstract">
+          OnlineHMR is a video-based framework for real-time, world-grounded human mesh recovery, enabling accurate 3D human pose estimation in dynamic real-world environments with online temporal modeling.
+        </div>
+      </div>
+      <div class="pub-item">
+        <span class="pub-tag">WACV 2026</span>
+        <a href="https://yijie-li2022.github.io/" target="_blank" class="author-link">Yijie Li</a>,
+        <strong>Ce Zheng (project lead)</strong>,
+        Yijie He,
+        <a href="https://joeljulin.github.io/" target="_blank" class="author-link">Joel Julin</a>,
+        Ryosuke Ichikari,
+        Satoki Ogiso,      
+        Satoshi Nakae,
+        Akihiro Sato,  
+        Takeshi Kurata,
+        <a href="https://www.laszlojeni.com/" target="_blank" class="author-link">Laszlo A. Jeni</a>.
+        <strong>Training-free Multi-view 4D Human Motion Reconstruction Virtual Reality</strong>.
+        IEEE/CVF Winter Conference on Applications of Computer Vision (WACV), 2026.
+        <a href="https://openaccess.thecvf.com/content/WACV2026/papers/Li_Training-free_Multi-view_4D_Human_Motion_Reconstruction_Virtual_Reality_System_WACV_2026_paper.pdf" target="_blank" class="pub-link">[paper]</a>
+        <a href="https://github.com/Att100/MV4DHMR" target="_blank" class="pub-link">[project page]</a>
+        <button class="abstract-btn" onclick="toggleAbstract(this)">
+          <i class="fa-solid fa-file-lines"></i> Abstract
+        </button>
+        <div class="pub-abstract">
+          This work presents a training-free multi-view framework for 4D human motion reconstruction in virtual reality systems, eliminating the need for large-scale labeled datasets while maintaining high accuracy and real-time performance.
+        </div>
+      </div>
+      <div class="pub-item">
+        <span class="pub-tag">AAAI 2026</span>
+        <a href="https://louisexie.simple.ink/" target="_blank" class="author-link">Liuyue Xie*</a>,
+        George Z. Wei*,
+        Avik Kuthiala*,
+        <strong>Ce Zheng</strong>,
+        Ananya Bal,
+        <a href="https://mosamdabhi.github.io/" target="_blank" class="author-link">Mosam Dabhi</a>,
+        Liting Wen,
+        Taru Rustagi,      
+        Ethan Lai,
+        Sushil Khyalia,  
+        <a href="https://rccchoudhury.github.io/" target="_blank" class="author-link">Rohan Choudhury</a>,
+        Morteza Ziyadi,  
+        Xu Zhang,
+        Hao Yang,
+        <a href="https://www.laszlojeni.com/" target="_blank" class="author-link">Laszlo A. Jeni</a>.
+        <strong>MAVERIX: Multimodal Audio-Visual Evaluation Reasoning IndeX</strong>.
+        The 40th Annual AAAI Conference on Artificial Intelligence (AAAI), 2026.
+        <a href="https://arxiv.org/pdf/2503.21699" target="_blank" class="pub-link">[paper]</a>
+        <a href="https://maverix-benchmark.github.io/" target="_blank" class="pub-link">[project page]</a>
+        <button class="abstract-btn" onclick="toggleAbstract(this)">
+          <i class="fa-solid fa-file-lines"></i> Abstract
+        </button>
+        <div class="pub-abstract">
+          MAVERIX is a comprehensive multimodal audio-visual evaluation reasoning index that unifies diverse evaluation metrics for audio-visual models, enabling fair and comprehensive comparison across different tasks and datasets.
+        </div>
       </div>
 
-      <!-- 其他年份和论文条目按同样格式继续... -->
-      <!-- （此处省略其余论文，你可直接复制你原 HTML 中的 pub-item 内容，只保留文本和链接） -->
+      <!-- 2025年论文 -->
+      <h3 class="pub-year">2025</h3>
+      <div class="pub-item">
+        <span class="pub-tag">ICCV Workshop (CV4A11y) 2025</span>
+        <a href="https://signllm.github.io/" target="_blank" class="author-link">Sen Fang</a>,
+        <a href="https://www.crcv.ucf.edu/chenchen/" target="_blank" class="author-link">Chen Chen</a>,
+        <a href="https://leiwangr.github.io//" target="_blank" class="author-link">Lei Wang</a>,      
+        <strong>Ce Zheng</strong>,
+        Chunyu Sui,
+        <a href="https://www.yapengtian.com/" target="_blank" class="author-link">Yapeng Tian</a>.
+        <strong>SignLLM: Sign Languages Production Large Language Models</strong>.
+        ICCV Workshop (CV4A11y), 2025.
+        <a href="https://arxiv.org/pdf/2405.10718" target="_blank" class="pub-link">[paper]</a>
+        <a href="https://signllm.github.io/" target="_blank" class="pub-link">[project page]</a>
+        <button class="abstract-btn" onclick="toggleAbstract(this)">
+          <i class="fa-solid fa-file-lines"></i> Abstract
+        </button>
+        <div class="pub-abstract">
+          SignLLM is a large language model tailored for sign language production, bridging the gap between natural language and sign language generation with improved accuracy and fluency for accessibility applications.
+        </div>
+      </div>
+      <div class="pub-item">
+        <span class="pub-tag">CVPR 2025</span>
+        Jing Gao,
+        <strong>Ce Zheng</strong>,
+        <a href="https://www.laszlojeni.com/" target="_blank" class="author-link">Laszlo A. Jeni</a>,    
+        <a href="https://zackory.com/" target="_blank" class="author-link">Zackory Erickson</a>.
+        <strong>DiSRT-In-Bed: Diffusion-Based Sim-to-Real Transfer Framework for In-Bed Human Mesh Recovery</strong>.
+        IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2025.
+        <a href="https://arxiv.org/abs/2504.03006" target="_blank" class="pub-link">[paper]</a>
+        <a href="https://jing-g2.github.io/DiSRT-In-Bed/" target="_blank" class="pub-link">[project page]</a>
+        <button class="abstract-btn" onclick="toggleAbstract(this)">
+          <i class="fa-solid fa-file-lines"></i> Abstract
+        </button>
+        <div class="pub-abstract">
+          DiSRT-In-Bed addresses the challenge of in-bed human mesh recovery by proposing a diffusion-based sim-to-real transfer framework, enabling accurate 3D human pose estimation for healthcare applications in bed environments.
+        </div>
+      </div>
+      <div class="pub-item">
+        <span class="pub-tag">WACV 2025</span>
+        <strong>Ce Zheng</strong>,
+        <a href="https://xianpeng919.github.io/" target="_blank" class="author-link">Xianpeng Liu</a>,
+        <a href="https://scholar.google.com/citations?user=IFqidw4AAAAJ&hl=en" target="_blank" class="author-link">Qucheng Peng</a>,
+        <a href="https://research.ece.ncsu.edu/ivmcl/" target="_blank" class="author-link">Tianfu Wu</a>,
+        <a href="https://webpages.charlotte.edu/pwang13/" target="_blank" class="author-link">Pu Wang</a>,    
+        <a href="https://www.crcv.ucf.edu/chenchen/" target="_blank" class="author-link">Chen Chen</a>.
+        <strong>DiffMesh: A Motion-aware Diffusion Framework for Human Mesh Recovery from Videos</strong>.
+        IEEE/CVF Winter Conference on Applications of Computer Vision (WACV), 2025.
+        <a href="https://arxiv.org/abs/2303.13397" target="_blank" class="pub-link">[paper]</a>
+        <a href="https://zczcwh.github.io/diffmesh_page/" target="_blank" class="pub-link">[project page]</a>
+        <button class="abstract-btn" onclick="toggleAbstract(this)">
+          <i class="fa-solid fa-file-lines"></i> Abstract
+        </button>
+        <div class="pub-abstract">
+          DiffMesh introduces a motion-aware diffusion framework for human mesh recovery from video sequences, capturing temporal dependencies and motion patterns to improve 3D human reconstruction accuracy.
+        </div>
+      </div>
 
+      <!-- 2024年论文 -->
+      <h3 class="pub-year">2024</h3>
+      <div class="pub-item">
+        <span class="pub-tag">ACM MM 2024</span>
+        <a href="https://sites.google.com/view/wenhanwu/" target="_blank" class="author-link">Wenhan Wu</a>,
+        <strong>Ce Zheng</strong>,
+        Zihao Yang,
+        <a href="https://www.crcv.ucf.edu/chenchen/" target="_blank" class="author-link">Chen Chen</a>,
+        <a href="https://srijandas07.github.io/" target="_blank" class="author-link">Srijan Das</a>,
+        <a href="https://cci.charlotte.edu/directory/aidong-lu/" target="_blank" class="author-link">Aidong Lu</a>.
+        <strong>Frequency Guidance Matters: Skeletal Action Recognition by Frequency-Aware Mixed Transformer</strong>.
+        ACM Multimedia (ACM MM), 2024.
+        <a href="https://arxiv.org/pdf/2407.12322" target="_blank" class="pub-link">[paper]</a>
+        <a href="" target="_blank" class="pub-link">[project page]</a>
+        <button class="abstract-btn" onclick="toggleAbstract(this)">
+          <i class="fa-solid fa-file-lines"></i> Abstract
+        </button>
+        <div class="pub-abstract">
+          This work highlights the importance of frequency domain guidance for skeletal action recognition, proposing a frequency-aware mixed transformer that integrates frequency domain features to enhance action recognition performance.
+        </div>
+      </div>
+      <div class="pub-item">
+        <span class="pub-tag">DAC 2024</span>
+        Shilin Tian,
+        Chase Szafranski,
+        <strong>Ce Zheng</strong>, 
+        Fan Yao, 
+        Ahmed Louri,
+        <a href="https://www.crcv.ucf.edu/chenchen/" target="_blank" class="author-link">Chen Chen</a>,
+        <a href="http://haozheng.us/" target="_blank" class="author-link">Hao Zheng</a>.	    
+        <strong>VITA: ViT Acceleration for Efficient 3D Human Mesh Recovery via Hardware-Algorithm Co-Design</strong>.
+        Design Automation Conference (DAC), 2024.
+        <a href="https://www.crcv.ucf.edu/chenchen/2024_DAC_VITA_Final.pdf" target="_blank" class="pub-link">[paper]</a>
+        <button class="abstract-btn" onclick="toggleAbstract(this)">
+          <i class="fa-solid fa-file-lines"></i> Abstract
+        </button>
+        <div class="pub-abstract">
+          VITA presents a hardware-algorithm co-design approach to accelerate Vision Transformer (ViT) for 3D human mesh recovery, achieving significant speedup while maintaining accuracy for edge deployment.
+        </div>
+      </div>
+      <div class="pub-item">
+        <span class="pub-tag">CVPR 2024</span>
+        <a href="https://davidpengiupui.github.io/" target="_blank" class="author-link">Qucheng Peng</a>,
+        <strong>Ce Zheng</strong>, 
+        <a href="https://www.crcv.ucf.edu/chenchen/" target="_blank" class="author-link">Chen Chen</a>.	    
+        <strong>A Dual-Augmentor Framework for Domain Generalization in 3D Human Pose Estimation</strong>.
+        IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2024.
+        <a href="https://arxiv.org/abs/2403.11310" target="_blank" class="pub-link">[paper]</a>
+        <a href="https://github.com/davidpengucf/DAF-DG" target="_blank" class="pub-link">[code]</a>
+        <button class="abstract-btn" onclick="toggleAbstract(this)">
+          <i class="fa-solid fa-file-lines"></i> Abstract
+        </button>
+        <div class="pub-abstract">
+          A dual-augmentor framework is proposed for domain generalization in 3D human pose estimation, addressing the domain shift problem by applying complementary augmentation strategies to improve cross-domain generalization.
+        </div>
+      </div>
+      <div class="pub-item">
+        <span class="pub-tag">CVPR 2024</span>
+        <a href="https://xianpeng919.github.io/" target="_blank" class="author-link">Xianpeng Liu</a>,
+        <strong>Ce Zheng</strong>,
+        Ming Qian,
+        <a href="https://xuenan.net/" target="_blank" class="author-link">Nan Xue</a>, 
+        <a href="https://www.crcv.ucf.edu/chenchen/" target="_blank" class="author-link">Chen Chen</a>,
+        Zhebin Zhang,
+        Chen Li,
+        <a href="https://research.ece.ncsu.edu/ivmcl/" target="_blank" class="author-link">Tianfu Wu</a>.
+        <strong>Multi-View Attentive Contextualization for Multi-View 3D Object Detection</strong>.
+        IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2024.
+        <a href="https://arxiv.org/abs/2405.12200" target="_blank" class="pub-link">[paper]</a>
+        <a href="https://xianpeng919.github.io/mvacon/" target="_blank" class="pub-link">[Project page]</a>
+        <button class="abstract-btn" onclick="toggleAbstract(this)">
+          <i class="fa-solid fa-file-lines"></i> Abstract
+        </button>
+        <div class="pub-abstract">
+          This work proposes multi-view attentive contextualization for multi-view 3D object detection, effectively aggregating contextual information across different views to improve 3D object detection accuracy.
+        </div>
+      </div>
+
+      <!-- 2023年论文 -->
+      <h3 class="pub-year">2023</h3>
+      <div class="pub-item">
+        <span class="pub-tag">NeurIPS 2023</span>
+        <a href="https://qitaozhao.github.io/" target="_blank" class="author-link">Qitao Zhao</a>,
+        <strong>Ce Zheng</strong>, 
+        <a href="https://humanperception.github.io/" target="_blank" class="author-link">Mengyuan Liu</a>,
+        <a href="https://www.crcv.ucf.edu/chenchen/" target="_blank" class="author-link">Chen Chen</a>.	    
+        <strong>A Single 2D Pose with Context is Worth Hundreds for 3D Human Pose Estimation</strong>.
+        Thirty-seventh Conference on Neural Information Processing Systems (NeurIPS), 2023.
+        <a href="https://arxiv.org/pdf/2311.03312.pdf" target="_blank" class="pub-link">[paper]</a>
+        <a href="https://qitaozhao.github.io/ContextAware-PoseFormer" target="_blank" class="pub-link">[project page]</a>
+        <button class="abstract-btn" onclick="toggleAbstract(this)">
+          <i class="fa-solid fa-file-lines"></i> Abstract
+        </button>
+        <div class="pub-abstract">
+          This paper demonstrates that a single 2D pose with contextual information can achieve comparable performance to hundreds of frames for 3D human pose estimation, highlighting the importance of context modeling.
+        </div>
+      </div>
+      <div class="pub-item">
+        <span class="pub-tag">ICCV 2023</span>
+        <a href="https://xianpeng919.github.io/" target="_blank" class="author-link">Xianpeng Liu</a>,
+        <strong>Ce Zheng</strong>,
+        Kelvin Cheng,
+        <a href="https://xuenan.net/" target="_blank" class="author-link">Nan Xue</a>, 
+        <a href="http://maple-lab.net/gqi/" target="_blank" class="author-link">Guo-Jun Qi</a>,
+        <a href="https://research.ece.ncsu.edu/ivmcl/" target="_blank" class="author-link">Tianfu Wu</a>.
+        <strong>Monocular 3D Object Detection with Bounding Box Denoising in 3D by Perceiver</strong>.
+        IEEE/CVF International Conference on Computer Vision (ICCV), 2023.
+        <a href="https://arxiv.org/pdf/2304.01289.pdf" target="_blank" class="pub-link">[paper]</a>
+        <a href="" target="_blank" class="pub-link">[Code]</a>
+        <button class="abstract-btn" onclick="toggleAbstract(this)">
+          <i class="fa-solid fa-file-lines"></i> Abstract
+        </button>
+        <div class="pub-abstract">
+          A novel approach for monocular 3D object detection is proposed, using a Perceiver-based module to denoise 3D bounding boxes, effectively reducing estimation errors and improving detection accuracy.
+        </div>
+      </div>
+      <div class="pub-item">
+        <span class="pub-tag">ICCV 2023</span>
+        <a href="https://davidpengiupui.github.io/" target="_blank" class="author-link">Qucheng Peng</a>,
+        <strong>Ce Zheng</strong>,
+        <a href="https://www.crcv.ucf.edu/chenchen/" target="_blank" class="author-link">Chen Chen</a>.
+        <strong>Source-free Domain Adaptive Human Pose Estimation</strong>.
+        IEEE/CVF International Conference on Computer Vision (ICCV), 2023.
+        <a href="https://arxiv.org/pdf/2308.03202.pdf" target="_blank" class="pub-link">[paper]</a>
+        <a href="https://github.com/davidpengucf/SFDAHPE" target="_blank" class="pub-link">[Code]</a>
+        <button class="abstract-btn" onclick="toggleAbstract(this)">
+          <i class="fa-solid fa-file-lines"></i> Abstract
+        </button>
+        <div class="pub-abstract">
+          This work addresses source-free domain adaptation for human pose estimation, enabling model adaptation to new domains without access to source domain data, critical for real-world deployment.
+        </div>
+      </div>
+      <div class="pub-item">
+        <span class="pub-tag">ICCV Workshop 2023</span>
+        <strong>Ce Zheng</strong>,
+        <a href="https://mmendiet.github.io/" target="_blank" class="author-link">Matias Mendieta</a>,     
+        <a href="https://www.crcv.ucf.edu/chenchen/" target="_blank" class="author-link">Chen Chen</a>.
+        <strong>POSTER: A Pyramid Cross-Fusion Transformer Network for Facial Expression Recognition</strong>.
+        ICCV Workshop, 2023.
+        <a href="https://arxiv.org/pdf/2204.04083.pdf" target="_blank" class="pub-link">[paper]</a>
+        <a href="https://github.com/zczcwh/POSTER" target="_blank" class="pub-link">[code]</a>
+        <button class="abstract-btn" onclick="toggleAbstract(this)">
+          <i class="fa-solid fa-file-lines"></i> Abstract
+        </button>
+        <div class="pub-abstract">
+          POSTER is a pyramid cross-fusion transformer network for facial expression recognition, fusing multi-scale features to capture both local and global facial expression cues for improved recognition accuracy.
+        </div>
+      </div>
+      <div class="pub-item">
+        <span class="pub-tag">CVPR 2023</span>
+        <strong>Ce Zheng</strong>,
+        <a href="https://xianpeng919.github.io/" target="_blank" class="author-link">Xianpeng Liu</a>,
+        <a href="http://maple-lab.net/gqi/" target="_blank" class="author-link">Guo-Jun Qi</a>,
+        <a href="https://www.crcv.ucf.edu/chenchen/" target="_blank" class="author-link">Chen Chen</a>.
+        <strong>POTTER: Pooling Attention Transformer for Efficient Human Mesh Recovery</strong>.
+        IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2023.
+        <a href="https://arxiv.org/pdf/2303.13357.pdf" target="_blank" class="pub-link">[paper]</a>
+        <a href="https://zczcwh.github.io/potter_page/" target="_blank" class="pub-link">[project page]</a>
+        <button class="abstract-btn" onclick="toggleAbstract(this)">
+          <i class="fa-solid fa-file-lines"></i> Abstract
+        </button>
+        <div class="pub-abstract">
+          POTTER introduces a pooling attention transformer for efficient human mesh recovery, reducing computational complexity while maintaining high accuracy for real-time 3D human reconstruction.
+        </div>
+      </div>
+      <div class="pub-item">
+        <span class="pub-tag">CVPR 2023</span>
+        <strong>Ce Zheng</strong>, 
+        <a href="https://mmendiet.github.io/" target="_blank" class="author-link">Matias Mendieta</a>,
+        <a href="https://taoyang1122.github.io/" target="_blank" class="author-link">Taojiannan Yang</a>,
+        <a href="http://maple-lab.net/gqi/" target="_blank" class="author-link">Guo-Jun Qi</a>, 
+        <a href="https://www.crcv.ucf.edu/chenchen/" target="_blank" class="author-link">Chen Chen</a>.
+        <strong>FeatER: An Efficient Network for Human Reconstruction via Feature Map-Based TransformER</strong>.
+        IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2023.
+        <a href="https://arxiv.org/pdf/2205.15448.pdf" target="_blank" class="pub-link">[paper]</a>
+        <a href="https://zczcwh.github.io/feater_page/" target="_blank" class="pub-link">[project page]</a>
+        <button class="abstract-btn" onclick="toggleAbstract(this)">
+          <i class="fa-solid fa-file-lines"></i> Abstract
+        </button>
+        <div class="pub-abstract">
+          FeatER is an efficient network for human reconstruction based on feature map transformers, optimizing feature extraction and transformation to achieve fast and accurate 3D human reconstruction.
+        </div>
+      </div>
+      <div class="pub-item">
+        <span class="pub-tag">CVPR 2023</span>
+        <a href="https://qitaozhao.github.io/" target="_blank" class="author-link">Qitao Zhao</a>, 
+        <strong>Ce Zheng</strong>, 
+        <a href="https://humanperception.github.io/" target="_blank" class="author-link">Mengyuan Liu</a>, 
+        <a href="https://wangpichao.github.io/" target="_blank" class="author-link">Pichao Wang</a>,
+        <a href="https://www.crcv.ucf.edu/chenchen/" target="_blank" class="author-link">Chen Chen</a>.
+        <strong>PoseFormerV2: Exploring Frequency Domain for Efficient and Robust 3D Human Pose Estimation</strong>.
+        IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2023.
+        <a href="https://arxiv.org/pdf/2303.17472.pdf" target="_blank" class="pub-link">[paper]</a>
+        <a href="https://qitaozhao.github.io/PoseFormerV2" target="_blank" class="pub-link">[project page]</a>
+        <button class="abstract-btn" onclick="toggleAbstract(this)">
+          <i class="fa-solid fa-file-lines"></i> Abstract
+        </button>
+        <div class="pub-abstract">
+          PoseFormerV2 explores the frequency domain for efficient and robust 3D human pose estimation, leveraging frequency domain analysis to improve both efficiency and accuracy of pose estimation models.
+        </div>
+      </div>
+      <div class="pub-item">
+        <span class="pub-tag">IJCAI 2023</span>
+        Yilei Hua,
+        <a href="https://sites.google.com/view/wenhanwu/" target="_blank" class="author-link">Wenhan Wu</a>,
+        <strong>Ce Zheng</strong>,
+        <a href="https://cci.charlotte.edu/directory/aidong-lu/" target="_blank" class="author-link">Aidong Lu</a>,
+        <a href="https://humanperception.github.io/" target="_blank" class="author-link">Mengyuan Liu</a>, 
+        <a href="https://www.crcv.ucf.edu/chenchen/" target="_blank" class="author-link">Chen Chen</a>,
+        Shiqian Wu.
+        <strong>Part Aware Contrastive Learning for Self-Supervised Action Recognition</strong>.
+        The International Joint Conference on Artificial Intelligence (IJCAI), 2023.
+        <a href="https://arxiv.org/pdf/2305.00666.pdf" target="_blank" class="pub-link">[paper]</a>
+        <a href="https://github.com/GitHubOfHyl97/SkeAttnCLR" target="_blank" class="pub-link">[code]</a>
+        <button class="abstract-btn" onclick="toggleAbstract(this)">
+          <i class="fa-solid fa-file-lines"></i> Abstract
+        </button>
+        <div class="pub-abstract">
+          Part aware contrastive learning is proposed for self-supervised action recognition, focusing on human body parts to learn more discriminative features for action recognition tasks.
+        </div>
+      </div>
+      <div class="pub-item">
+        <span class="pub-tag">IROS 2023</span>
+        <a href="https://shengnanhu.netlify.app/" target="_blank" class="author-link">Shengnan Hu</a>,
+        <strong>Ce Zheng</strong>,
+        <a href="https://edwardzhou130.github.io/" target="_blank" class="author-link">Zixiang Zhou</a>,
+        <a href="https://www.crcv.ucf.edu/chenchen/" target="_blank" class="author-link">Chen Chen</a>,
+        <a href="https://www.eecs.ucf.edu/~gitars/" target="_blank" class="author-link">Gita Sukthankar</a>.
+        <strong>LAMP: Leveraging Language Prompts for Multi-person Pose Estimation</strong>.
+        The IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2023.
+        <a href="https://arxiv.org/pdf/2307.11934.pdf" target="_blank" class="pub-link">[paper]</a>
+        <a href="https://github.com/shengnanh20/LAMP" target="_blank" class="pub-link">[code]</a>
+        <button class="abstract-btn" onclick="toggleAbstract(this)">
+          <i class="fa-solid fa-file-lines"></i> Abstract
+        </button>
+        <div class="pub-abstract">
+          LAMP leverages language prompts to improve multi-person pose estimation, integrating textual information to enhance the model's ability to distinguish and localize multiple people in complex scenes.
+        </div>
+      </div>
+      <div class="pub-item">
+        <span class="pub-tag">ACM Computing Surveys 2023</span>
+        <strong>Ce Zheng*</strong>,
+        <a href="https://sites.google.com/view/wenhanwu/" target="_blank" class="author-link">Wenhan Wu*</a>,
+        <a href="https://www.crcv.ucf.edu/chenchen/" target="_blank" class="author-link">Chen Chen</a>, 
+        <a href="https://taoyang1122.github.io/" target="_blank" class="author-link">Taojiannan Yang</a>,
+        <a href="https://jeff-zilence.github.io/" target="_blank" class="author-link">Sijie Zhu</a>,
+        Ju Shen,
+        Nasser Kehtarnavaz,
+        <a href="https://www.crcv.ucf.edu/person/mubarak-shah/" target="_blank" class="author-link">Mubarak Shah</a>.
+        <strong>Deep Learning-Based Human Pose Estimation: A Survey</strong>.
+        ACM Computing Surveys (IF=14.32), 2023.
+        <a href="https://arxiv.org/pdf/2012.13392.pdf" target="_blank" class="pub-link">[paper]</a>
+        <a href="https://github.com/zczcwh/DL-HPE" target="_blank" class="pub-link">[Project page]</a>
+        <button class="abstract-btn" onclick="toggleAbstract(this)">
+          <i class="fa-solid fa-file-lines"></i> Abstract
+        </button>
+        <div class="pub-abstract">
+          This comprehensive survey covers deep learning-based human pose estimation, reviewing key methods, datasets, evaluation metrics, and discussing open challenges and future research directions in the field.
+        </div>
+      </div>
+
+      <!-- 2022年论文 -->
+      <h3 class="pub-year">2022</h3>
+      <div class="pub-item">
+        <span class="pub-tag">ACM MM 2022</span>
+        <strong>Ce Zheng</strong>,
+        <a href="https://mmendiet.github.io/" target="_blank" class="author-link">Matias Mendieta</a>,
+        <a href="https://webpages.charlotte.edu/pwang13/" target="_blank" class="author-link">Pu Wang</a>,
+        <a href="https://cci.charlotte.edu/directory/aidong-lu/" target="_blank" class="author-link">Aidong Lu</a>,   
+        <a href="https://www.crcv.ucf.edu/chenchen/" target="_blank" class="author-link">Chen Chen</a>.
+        <strong>A Lightweight Graph Transformer Network for Human Mesh Reconstruction from 2D Human Pose</strong>.
+        ACM International Conference on Multimedia (ACM MM), 2022.
+        <a href="https://arxiv.org/pdf/2111.12696.pdf" target="_blank" class="pub-link">[paper]</a>
+        <a href="https://github.com/zczcwh/GTRS" target="_blank" class="pub-link">[code]</a>
+        <button class="abstract-btn" onclick="toggleAbstract(this)">
+          <i class="fa-solid fa-file-lines"></i> Abstract
+        </button>
+        <div class="pub-abstract">
+          A lightweight graph transformer network is proposed for human mesh reconstruction from 2D pose, combining graph neural networks and transformers to achieve efficient and accurate 3D human mesh recovery.
+        </div>
+      </div>
+
+      <!-- 2021年论文 -->
+      <h3 class="pub-year">2021</h3>
+      <div class="pub-item">
+        <span class="pub-tag">ICCV 2021</span>
+        <strong>Ce Zheng</strong>, 
+        <a href="https://jeff-zilence.github.io/" target="_blank" class="author-link">Sijie Zhu</a>, 
+        <a href="https://mmendiet.github.io/" target="_blank" class="author-link">Matias Mendieta</a>,
+        <a href="https://taoyang1122.github.io/" target="_blank" class="author-link">Taojiannan Yang</a>,
+        <a href="https://www.crcv.ucf.edu/chenchen/" target="_blank" class="author-link">Chen Chen</a>, 
+        <a href="https://www.cs.tulane.edu/~zding1/" target="_blank" class="author-link">Zhengming Ding</a>.
+        <strong>3D Human Pose Estimation with Spatial and Temporal Transformers</strong>.
+        IEEE/CVF International Conference on Computer Vision (ICCV), 2021.
+        <a href="https://arxiv.org/pdf/2103.10455.pdf" target="_blank" class="pub-link">[paper]</a>
+        <a href="https://github.com/zczcwh/PoseFormer" target="_blank" class="pub-link">[code]</a>
+        <button class="abstract-btn" onclick="toggleAbstract(this)">
+          <i class="fa-solid fa-file-lines"></i> Abstract
+        </button>
+        <div class="pub-abstract">
+          This work introduces spatial and temporal transformers for 3D human pose estimation, effectively modeling both spatial dependencies of human joints and temporal dynamics of human motion for improved pose estimation.
+        </div>
+      </div>
+      <div class="pub-item">
+        <span class="pub-tag">TMM 2021</span>
+        <a href="https://ming1993li.github.io/" target="_blank" class="author-link">Ming Li</a>,
+        <a href="https://people.sutd.edu.sg/~jun_liu/" target="_blank" class="author-link">Jun Liu</a>,
+        <strong>Ce Zheng</strong>,
+        Xinming Huang, 
+        <a href="https://zhang-vislab.github.io/" target="_blank" class="author-link">Ziming Zhang</a>.
+        <strong>Exploiting Multi-view Part-wise Correlation via an Efficient Transformer for Vehicle Re-Identification</strong>.
+        IEEE Transactions on Multimedia (TMM), 2021.
+        <a href="https://ieeexplore.ieee.org/document/9647974" target="_blank" class="pub-link">[paper]</a>
+        <button class="abstract-btn" onclick="toggleAbstract(this)">
+          <i class="fa-solid fa-file-lines"></i> Abstract
+        </button>
+        <div class="pub-abstract">
+          This paper exploits multi-view part-wise correlation using an efficient transformer for vehicle re-identification, capturing fine-grained vehicle features across different views to improve re-identification accuracy.
+        </div>
+      </div>
+
+      <!-- 2020年论文 -->
+      <h3 class="pub-year">2020</h3>
+      <div class="pub-item">
+        <span class="pub-tag">ACM MM 2020</span>
+        <strong>Ce Zheng</strong>,
+        Yecheng Lyu,
+        <a href="https://ming1993li.github.io/" target="_blank" class="author-link">Ming Li</a>, 
+        <a href="https://zhang-vislab.github.io/" target="_blank" class="author-link">Ziming Zhang</a>.
+        <strong>LodoNet: A Deep Neural Network with 2D Keypoint Matching for 3D LiDAR Odometry Estimation</strong>.
+        ACM International Conference on Multimedia (ACM MM), 2020.
+        <a href="https://arxiv.org/pdf/2009.00164.pdf" target="_blank" class="pub-link">[paper]</a>
+        <button class="abstract-btn" onclick="toggleAbstract(this)">
+          <i class="fa-solid fa-file-lines"></i> Abstract
+        </button>
+        <div class="pub-abstract">
+          LodoNet is a deep neural network for 3D LiDAR odometry estimation using 2D keypoint matching, simplifying the odometry estimation process while maintaining high accuracy for autonomous navigation applications.
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- Preprint折叠/展开JS + Abstract切换JS -->
+  <script>
+    // Preprint折叠逻辑
+    function togglePreprint() {
+      const content = document.getElementById("preprint-content");
+      const btn = document.querySelector(".toggle-btn");
+      if (content.style.display === "none") {
+        content.style.display = "block";
+        btn.textContent = "Hide Preprints";
+      } else {
+        content.style.display = "none";
+        btn.textContent = "Show Preprints";
+      }
+    }
+
+    // Abstract展开/收起逻辑
+    function toggleAbstract(btn) {
+      const abstract = btn.nextElementSibling;
+      if (abstract.style.display === "block") {
+        abstract.style.display = "none";
+        btn.classList.remove("active");
+      } else {
+        abstract.style.display = "block";
+        btn.classList.add("active");
+      }
+    }
+  </script>
 </body>
 </html>
