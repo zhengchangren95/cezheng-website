@@ -111,17 +111,22 @@
       color: white;
       text-decoration: none;
     }
-    /* 隐藏彩蛋：平时看不见，鼠标悬浮/框选显示 */
+    /* 隐藏彩蛋：平时完全隐藏，鼠标悬浮/框选显示 */
     .hidden-egg {
-      color: transparent; /* 平时完全透明看不见 */
+      color: transparent; /* 文字透明 */
       font-size: 16px;
       cursor: pointer;
+      position: absolute; /* 绝对定位 */
+      left: -9999px; /* 平时偏移到页面外，完全看不见 */
+      top: 0;
+      transition: all 0.2s; /* 悬浮过渡更丝滑 */
     }
-    /* 鼠标悬浮时显示文字 */
-    .hidden-egg:hover {
-      color: #0066cc; /* 蓝色文字，和你网站统一 */
+    /* 鼠标悬浮时拉回文字并显示颜色 */
+    .step-list li:hover .hidden-egg {
+      left: 28px; /* 回到原位置 */
+      color: #0066cc; /* 显示蓝色文字 */
     }
-    /* 鼠标框选时也显示 */
+    /* 鼠标框选时显示 */
     .hidden-egg::selection {
       color: #0066cc;
       background: #e6f2ff;
@@ -156,7 +161,7 @@
           <li data-step="3">阐述自身研究方向与相关经验；如有发表文章，注明文章信息（非一作需简要说明个人贡献）；并说明加入团队后想开展的研究方向。</li>
           <li data-step="4"><span class="optional">（非必须）</span>是否通过朋友推荐了解到本团队，若有请注明推荐人。</li>
           <li data-step="5">附件需附上个人简历，简历细节无需在邮件正文中重复。</li>
-          <li data-step="6">
+          <li data-step="6" style="position: relative;">
             <a href="hidden.html" class="hidden-egg">点击查看隐藏彩蛋</a>
           </li>
         </ul>
