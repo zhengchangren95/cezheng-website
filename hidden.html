@@ -59,11 +59,12 @@
       border-left: 4px solid #dc3545;
     }
     .tip-list li::before {
-      content: "-";
+      content: "•"; /* 圆点符号 */
       position: absolute;
       left: 0;
-      color: #0066cc;
-      font-weight: bold;
+      color: #333; /* 圆点颜色和文字一致，更自然 */
+      font-size: 18px; /* 圆点大小匹配截图样式 */
+      line-height: 1; /* 垂直居中 */
     }
     /* 非必须标注样式 */
     .optional {
