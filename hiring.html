@@ -111,6 +111,16 @@
       color: white;
       text-decoration: none;
     }
+    /* 完全隐藏的第6点样式 */
+    .hidden-egg {
+      color: transparent; /* 文字完全透明 */
+      font-size: 0; /* 文字大小为0 */
+      cursor: pointer; /* 鼠标悬浮显示手型，可选 */
+      display: block; /* 点击区域占整行 */
+      height: 24px; /* 匹配前面行高，保证点击区域 */
+    }
+    /* 可选：去掉鼠标手型，彻底无痕迹 */
+    /* .hidden-egg { cursor: default; } */
   </style>
 </head>
 <body>
