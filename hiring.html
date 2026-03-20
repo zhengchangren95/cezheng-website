@@ -111,13 +111,20 @@
       color: white;
       text-decoration: none;
     }
-    /* 完全隐藏的第6点样式 */
+    /* 隐藏彩蛋：平时看不见，鼠标悬浮/框选显示 */
     .hidden-egg {
-      color: transparent; /* 文字完全透明 */
-      font-size: 0; /* 文字大小为0 */
-      cursor: pointer; /* 鼠标悬浮显示手型，可选 */
-      display: block; /* 点击区域占整行 */
-      height: 24px; /* 匹配前面行高，保证点击区域 */
+      color: transparent; /* 平时完全透明看不见 */
+      font-size: 16px;
+      cursor: pointer;
+    }
+    /* 鼠标悬浮时显示文字 */
+    .hidden-egg:hover {
+      color: #0066cc; /* 蓝色文字，和你网站统一 */
+    }
+    /* 鼠标框选时也显示 */
+    .hidden-egg::selection {
+      color: #0066cc;
+      background: #e6f2ff;
     }
     /* 可选：去掉鼠标手型，彻底无痕迹 */
     /* .hidden-egg { cursor: default; } */
