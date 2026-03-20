@@ -3,83 +3,118 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>加入我们 - 郑策 - 华中科技大学人工智能与自动化学院</title>
-  <!-- 替换[你的仓库名]：主仓库直接删除/[你的仓库名]，保留/assets/css/style.css -->
+  <title>招生详细信息 - 郑策 - 华中科技大学人工智能与自动化学院</title>
   <link rel="stylesheet" href="/cezheng-website/assets/css/style.css">
-  <!-- 引入Font Awesome图标库（仅新增这一行） -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* 加入我们页面专属样式（贴合原站+适配内容排版） */
-    .join-section {
-      margin-bottom: 35px;
-      padding: 5px 0;
+    /* 整体布局保持与join.html一致 */
+    .content {
+      flex: 1;
+      padding-left: 0;
+      padding-top: 40px;
+      border-left: none;
+      max-width: 900px; /* 限制内容宽度，避免文字过宽 */
+      margin: 0 auto;
     }
-    .join-section h3 {
-      color: #003366; /* 与所有页面标题配色一致 */
-      font-size: 19px;
-      margin-bottom: 15px;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 5px;
+    /* 主标题样式 */
+    h2 {
+      font-size: 28px;
+      color: #003366;
+      margin-bottom: 25px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #0066cc;
+      font-weight: 600;
     }
-    .join-section p {
-      margin-bottom: 12px;
+    /* 副标题样式 */
+    h3 {
+      font-size: 20px;
+      color: #0056b3;
+      margin: 30px 0 15px 0;
+      font-weight: 600;
+    }
+    /* 正文段落 */
+    p.intro {
       font-size: 16px;
       line-height: 1.8;
       color: #333;
+      margin-bottom: 20px;
     }
-    .join-section ul {
-      list-style: disc;
-      margin-left: 25px;
-      margin-bottom: 15px;
+    /* 邮件格式要求容器 */
+    .email-guide {
+      background-color: #f8f9fa;
+      padding: 25px;
+      border-radius: 8px;
+      border: 1px solid #e9ecef;
+      margin-bottom: 20px;
     }
-    .join-section li {
-      margin-bottom: 10px;
-      font-size: 16px;
-      line-height: 1.7;
-      color: #333;
-    }
-    /* 研究方向跳转按钮（贴合原站按钮风格） */
-    .research-link {
+    /* 邮件标题样式 */
+    .email-title {
+      font-size: 15px;
+      font-weight: bold;
+      color: #dc3545;
+      background-color: #fff5f5;
+      padding: 10px 15px;
+      border-radius: 6px;
+      margin: 15px 0;
       display: inline-block;
-      background-color: #f0f0f0;
-      border: 1px solid #ccc;
-      color: #000;
+      border-left: 4px solid #dc3545;
+    }
+    /* 步骤列表样式 */
+    .step-list {
+      list-style: none;
+      padding-left: 0;
+    }
+    .step-list li {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #212529;
+      margin: 12px 0;
+      padding-left: 28px;
+      position: relative;
+    }
+    /* 步骤编号装饰 */
+    .step-list li::before {
+      content: attr(data-step);
+      display: inline-block;
+      width: 22px;
+      height: 22px;
+      line-height: 22px;
+      text-align: center;
+      background-color: #0066cc;
+      color: white;
+      border-radius: 50%;
+      position: absolute;
+      left: 0;
+      top: 2px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    /* 非必须标注样式 */
+    .optional {
       font-size: 14px;
-      padding: 4px 12px;
-      border-radius: 4px;
-      text-decoration: none;
-      margin-right: 10px;
-      margin-bottom: 10px;
+      color: #6c757d;
+      font-style: italic;
     }
-    .research-link:hover {
-      background-color: #e6e6e6;
-      text-decoration: none;
-    }
-    /* 引用链接样式 */
-    .join-section a:not(.research-link) {
+    /* 返回链接样式 */
+    .back-link {
+      display: inline-block;
+      margin-top: 30px;
+      font-size: 15px;
       color: #0066cc;
-      text-decoration: underline;
-    }
-    .join-section a:not(.research-link):hover {
       text-decoration: none;
+      padding: 8px 15px;
+      border: 1px solid #0066cc;
+      border-radius: 6px;
+      transition: all 0.2s;
     }
-    /* 带备注的文字样式：点状下划线+问号鼠标指针 */
-    .join-section li span[title],
-    .join-section span[title] {
-      text-decoration: underline dotted #0066cc;
-      cursor: help;
-    }
-    /* 仅新增：悬停引导图标样式 */
-    .tooltip-icon {
-      color: #0066cc;
-      cursor: help;
-      margin-left: 6px;
-      font-size: 14px;
+    .back-link:hover {
+      background-color: #0066cc;
+      color: white;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
-  <!-- 顶部导航栏：与所有页面保持统一 -->
+  <!-- 导航栏保持不变 -->
   <div class="navbar">
     <a href="index.html">首页</a>
     <a href="research.html">研究方向</a>
@@ -88,39 +123,27 @@
     <a href="join.html">加入我们</a>
   </div>
 
-  <!-- 主体容器：移除左侧侧边栏，仅保留右侧内容区并居中（仅修改这部分布局） -->
-<div class="container" style="display: flex; max-width: 1600px; margin: 0 auto; padding: 40px 20px;">
-  <div class="content" style="flex: 1; padding-left: 0; padding-top: 40px; border-left: none;">
-    
+  <!-- 主体内容布局 -->
+  <div class="container" style="display: flex; max-width: 1600px; margin: 0 auto; padding: 40px 20px;">
+    <div class="content">
       <h2>招生信息</h2>
+      <p class="intro">欢迎对计算机视觉、具身智能、多模态学习方向感兴趣的同学联系我。请务必按照以下要求发送意向邮件，我会尽快查看并回复。</p>
 
-      <p>欢迎对计算机视觉、具身智能、多模态等方向感兴趣的同学联系我。请务必按照以下要求发送意向邮件，我会尽快查看并回复。</p>
-
-      <h3>意向邮件格式要求</h3>
-      
-      <div class="email-box">
-        <p><strong>邮件标题：</strong><br>
-        华科AI-姓名-申请类型（硕士申请/博士申请/实习申请）</p>
+      <div class="email-guide">
+        <h3>意向邮件格式要求</h3>
+        <div class="email-title">邮件标题：华科AI-姓名-申请类型（硕士申请/博士申请/实习申请）</div>
+        
+        <ul class="step-list">
+          <li data-step="1">简明扼要写出个人信息，包括学校、年级、GPA、英文成绩。</li>
+          <li data-step="2">写明你的需求（申请硕士/博士/短期实习）；若为实习，请注明可实习时长，并说明后续规划（如出国读博、积累论文经验等）。</li>
+          <li data-step="3">阐述自身研究方向与相关经验；如有发表文章，注明文章信息（非一作需简要说明个人贡献）；并说明加入团队后想开展的研究方向。</li>
+          <li data-step="4"><span class="optional">（非必须）</span>是否通过朋友推荐了解到本团队，若有请注明推荐人。</li>
+          <li data-step="5">附件需附上个人简历，简历细节无需在邮件正文中重复。</li>
+        </ul>
       </div>
 
-      <ul>
-        <li><strong>第一段：</strong>简明扼要写出个人信息，如学校、年级、GPA、英文成绩。</li>
-        
-        <li><strong>第二段：</strong>写明你的需求，是想申请硕士还是博士。如果是短期实习，能做多久。是否对下一步有所规划？比如想出国读博，想通过短期实习积累文章为之后申请做准备。</li>
-        
-        <li><strong>第三段：</strong>自己感兴趣的研究方向，是否有相关经验。如有发表文章，写出文章信息；不是一作的话简短写出自己的贡献。如果加入我们团队，具体想做哪一个任务。</li>
-        
-        <li><strong>第四段（非必须）：</strong>是否是通过朋友推荐了解到我的，是的话推荐人是谁。</li>
-        
-        <li><strong>附件：</strong>附上个人简历，注意简历细节无需在邮件里重复。</li>
-      </ul>
-
-      <br>
-      <p><a href="join.html">← 返回加入我们</a></p>
-
-
+      <a href="join.html" class="back-link">← 返回加入我们</a>
+    </div>
   </div>
-</div>
-
 </body>
 </html>
