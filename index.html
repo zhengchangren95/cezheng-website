@@ -30,6 +30,51 @@
       color: #003366;
       font-weight: bold;
     }
+    
+    /* Tooltip 容器 */
+    .tooltip {
+      position: relative;
+      cursor: help; /* 鼠标悬停时显示问号光标，暗示可交互 */
+      border-bottom: 1px dotted #666; /* 可选：加下划线提示 */
+    }
+    
+    /* Tooltip 提示框 */
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: max-content;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      border-radius: 4px;
+      padding: 4px 8px;
+      position: absolute;
+      z-index: 1000;
+      bottom: 125%; /* 显示在上方 */
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.2s ease-in-out;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    
+    /* 悬停时显示 */
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+    }
+    
+    /* 小三角箭头（可选） */
+    .tooltip .tooltiptext::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: #333 transparent transparent transparent;
+    }
   </style>
 </head>
 <body>
